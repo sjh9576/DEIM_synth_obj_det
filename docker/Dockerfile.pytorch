@@ -1,0 +1,30 @@
+FROM pytorch/pytorch:2.6.0-cuda12.6-cudnn9-devel
+
+RUN apt-get update
+RUN apt-get -y upgrade
+
+RUN apt-get install -y ffmpeg
+RUN pip install --upgrade pip
+
+RUN ln -sf /usr/bin/python3 /usr/bin/python
+RUN python -m pip install opencv-python
+RUN python -m pip install tqdm
+
+RUN python -m pip install faster-coco-eval>=1.6.5
+RUN python -m pip install PyYAML
+RUN python -m pip install tensorboard
+RUN python -m pip install scipy
+RUN python -m pip install calflops
+RUN python -m pip install transformers
+
+ARG USER_NAME=desktop
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+RUN addgroup --gid $GROUP_ID $USER_NAME
+RUN adduser --disabled-password --gecos "" --uid $USER_ID --gid $GROUP_ID $USER_NAME
+USER $USER_NAME
+
+# Set the working directory
+WORKDIR /workspace
+
+CMD ["/bin/bash"]
