@@ -28,7 +28,7 @@ if docker ps -q -f name="${CONTAINER_TAG}" | grep -q .; then
   docker attach "${CONTAINER_TAG}"
 else
   echo "Starting new container: ${CONTAINER_TAG}"
-  docker run -it --rm \
+  docker run -it \
     ${CPU_OPT} ${NAME_OPT} ${USER_OPT} ${VOL_OPTS} ${TZ_OPT} \
     ${PRIV_OPT} ${NET_OPT} ${DISP_OPT} ${HOST_OPT} ${GPU_OPT} \
     "${FULL_IMAGE}" /bin/bash
