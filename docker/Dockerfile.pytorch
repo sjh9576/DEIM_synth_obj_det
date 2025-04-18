@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:2.6.0-cuda12.6-cudnn9-devel
+FROM pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel
 
 RUN apt-get update
 RUN apt-get -y upgrade
@@ -16,6 +16,11 @@ RUN python -m pip install tensorboard
 RUN python -m pip install scipy
 RUN python -m pip install calflops
 RUN python -m pip install transformers
+
+RUN python -m pip install tensorrt==10.7.0
+RUN python -m pip install onnxruntime-gpu
+RUN python -m pip install onnx
+RUN python -m pip install onnxsim
 
 ARG USER_NAME=desktop
 ARG USER_ID=1000

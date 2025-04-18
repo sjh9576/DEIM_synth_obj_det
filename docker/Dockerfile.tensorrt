@@ -1,0 +1,9 @@
+FROM nvcr.io/nvidia/tensorrt:24.12-py3
+
+RUN apt-get update
+RUN apt-get -y upgrade
+
+# Set the working directory
+WORKDIR /workspace
+
+CMD ["/bin/bash"]

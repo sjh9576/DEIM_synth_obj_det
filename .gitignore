@@ -136,3 +136,8 @@ dmypy.json
 *.zip
 *.html
 .DS_Store
+
+/deim_outputs/*
+*.jpg
+*.csv
+/result/*
